@@ -1,16 +1,13 @@
-from lib2to3.pgen2.pgen import generate_grammar
-from django.shortcuts import render
 
-from rest_framework import generics
-from librarymanagement import serializers
 
-from librarymanagement.models import Book
-from librarymanagement.serializers import BookSerializer
+from rest_framework import viewsets
+from .serializers import adminSerializer
+from .models import Book
 
-class Booklist(generics.ListCreateAPIView):
+class BookviewSet(viewsets.ModelViewSet):
+    
     queryset = Book.objects.all()
-    serializer_class = BookSerializer
+    serializer_class = adminSerializer
 
 
-
-
+                
